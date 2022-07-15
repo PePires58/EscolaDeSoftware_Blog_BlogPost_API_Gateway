@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  title: BlogPost API
+  description: BlogPost API Gateway
+  version: 0.0.1
+paths:
+  /blogposts:
+    post:
+      summary: insert a blogpost
+      description: insert a blogpost
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/blogpost"
+      responses:
+        "201":
+          description: blogpost insert with success
+        "400":
+          description: error with input object
+        "500":
+          description: internal server error
+components:
+  schemas:
+    blogpost:
+      $ref: schemas/blogpost.yaml

@@ -1,0 +1,29 @@
+type: object
+properties:
+  id:
+    description: id of blogpost
+    type: string
+  title:
+    description: title of blogpost
+    type: string
+  category:
+    description: category of blogpost
+    type: string
+  content_bucket_key:
+    description: content bucket key
+    type: string
+  image_principal_key:
+    description: image principal key
+    type: string
+  post_date:
+    description: post date of blogpost
+    type: string
+  resume:
+    description: resume of blogpost
+    type: string
+required:
+  - title
+  - category
+  - resume
+  - post_date
+  - image_principal_key

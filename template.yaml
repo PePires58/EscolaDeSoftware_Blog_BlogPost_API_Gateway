@@ -10,7 +10,7 @@ Resources:
   BlogPostAPIGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: !Sub "Api gateway BlogPost - ${Environment}"
+      Name: !Sub "Api gateway BlogPost - ${Enviroment}"
       Description: !Sub "Api gateway for BlogPost - ${Environment}"
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
@@ -18,4 +18,14 @@ Resources:
           - REGIONAL
       FailOnWarnings: False
       Mode: overwrite
-      Body: null
+      BodyS3Location:
+        Bucket:
+          Fn::Join:
+            [
+              "-",
+              [
+                !Ref Environment,
+                escoladesoftware-blog-blogpost-api-definition-bucket,
+              ],
+            ]
+        Key: openApiBlogPost.yaml
