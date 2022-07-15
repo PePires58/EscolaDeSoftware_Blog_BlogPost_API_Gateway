@@ -16,6 +16,5 @@ Resources:
         Type: REGIONAL
       Mode: overwrite
       Name: BlogPost Api Gateway
-      OpenApiVersion: 3.0.0
       StageName: !Ref Environment
       TracingEnabled: False
