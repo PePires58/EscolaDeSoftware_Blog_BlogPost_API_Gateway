@@ -5,43 +5,17 @@ Parameters:
   Environment:
     Description: Environment
     Type: String
-  BlogPostLambdaPutArn:
-    Description: BlogPost Lambda Arn
-    Type: String
 Resources:
   BlogPostAPIGateway:
-    Type: AWS::ApiGateway::RestApi
+    Type: AWS::Serverless::Api
     Properties:
-      Name: !Sub "Api gateway BlogPost - ${Environment}"
-      Description: !Sub "Api gateway for BlogPost - ${Environment}"
+      CacheClusterEnabled: False
+      Description: BlogPost Api Gateway
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
-        Types:
-          - REGIONAL
-      FailOnWarnings: False
+        Type: REGIONAL
       Mode: overwrite
-      BodyS3Location:
-        Bucket:
-          Fn::Join:
-            [
-              "-",
-              [
-                !Ref Environment,
-                escoladesoftware-blog-blogpost-api-definition-bucket,
-              ],
-            ]
-        Key: openApiBlogPost.yaml
-
-  BlogPostPostMethod:
-    Type: AWS::ApiGateway::Method
-    Properties:
-      RestApiId: !Ref BlogPostAPIGateway
-      ResourceId: !GetAtt
-        - BlogPostAPIGateway
-        - RootResourceId
-      HttpMethod: POST
-      AuthorizationType: NONE
-      Integration:
-        Type: AWS_PROXY
-        IntegrationHttpMethod: POST
-        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${BlogPostLambdaPutArn}/invocations"
+      Name: BlogPost Api Gateway
+      OpenApiVersion: 1.0.0
+      StageName: !Ref Environment
+      TracingEnabled: False
