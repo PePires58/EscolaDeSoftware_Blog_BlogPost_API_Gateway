@@ -5,7 +5,9 @@ Parameters:
   Environment:
     Description: Environment
     Type: String
-
+  BlogPostLambdaPutArn:
+    Description: BlogPost Lambda Arn
+    Type: String
 Resources:
   BlogPostAPIGateway:
     Type: AWS::ApiGateway::RestApi
@@ -29,3 +31,17 @@ Resources:
               ],
             ]
         Key: openApiBlogPost.yaml
+
+  BlogPostPostMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      RestApiId: !Ref BlogPostAPIGateway
+      ResourceId: !GetAtt
+        - BlogPostAPIGateway
+        - RootResourceId
+      HttpMethod: POST
+      AuthorizationType: NONE
+      Integration:
+        Type: AWS_PROXY
+        IntegrationHttpMethod: POST
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${BlogPostLambdaPutArn}/invocations"
