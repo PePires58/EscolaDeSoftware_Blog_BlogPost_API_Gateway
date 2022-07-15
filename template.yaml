@@ -9,12 +9,17 @@ Resources:
   BlogPostAPIGateway:
     Type: AWS::Serverless::Api
     Properties:
-      CacheClusterEnabled: False
+      Name: BlogPost Api Gateway
       Description: BlogPost Api Gateway
+      MethodSettings:
+        - ResourcePath: /blogposts
+          HttpMethod: POST
+        - ResourcePath: /blogposts
+          HttpMethod: GET
+      CacheClusterEnabled: False
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
         Type: REGIONAL
       Mode: overwrite
-      Name: BlogPost Api Gateway
       StageName: !Ref Environment
       TracingEnabled: False
