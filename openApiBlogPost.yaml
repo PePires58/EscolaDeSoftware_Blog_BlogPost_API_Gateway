@@ -24,4 +24,4 @@ paths:
 components:
   schemas:
     blogpost:
-      $ref: schemas/blogpost.yaml
+      $ref: ./schemas/blogpost.yaml
