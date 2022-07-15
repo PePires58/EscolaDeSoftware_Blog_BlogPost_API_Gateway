@@ -10,7 +10,7 @@ Resources:
   BlogPostAPIGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: !Sub "Api gateway BlogPost - ${Enviroment}"
+      Name: !Sub "Api gateway BlogPost - ${Environment}"
       Description: !Sub "Api gateway for BlogPost - ${Environment}"
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
