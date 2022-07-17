@@ -17,14 +17,6 @@ Resources:
           title: BlogPost API
           description: BlogPost API Gateway
           version: 0.0.1
-        paths:
-          /blogposts:
-            options:
-            summary: OPTIONS for blogpost
-            description: OPTIONS for blogpost
-            responses:
-              "200":
-                description: CORS content for blogpost
       CacheClusterEnabled: False
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
