@@ -12,7 +12,7 @@ Resources:
       DataType: text
       Description: API Gateway ID
       Name:
-        Fn::Join: ["/", [!Ref Environment, BlogPost, APIGateway, Id]]
+        Fn::Join: ["/", [!Sub "/${Environment}", BlogPost, APIGateway, Id]]
       Tags:
         Environment: !Ref Environment
       Type: String
