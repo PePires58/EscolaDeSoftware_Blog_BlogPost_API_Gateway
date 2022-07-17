@@ -11,11 +11,20 @@ Resources:
     Properties:
       Name: BlogPost Api Gateway
       Description: BlogPost Api Gateway
-      MethodSettings:
-        - ResourcePath: /blogposts
-          HttpMethod: POST
-        - ResourcePath: /blogposts
-          HttpMethod: GET
+      Body:
+        openapi: 3.0.0
+        info:
+          title: BlogPost API
+          description: BlogPost API Gateway
+          version: 0.0.1
+        paths:
+          /blogposts:
+            options:
+            summary: OPTIONS for blogpost
+            description: OPTIONS for blogpost
+            responses:
+              "200":
+                description: CORS content for blogpost
       CacheClusterEnabled: False
       DisableExecuteApiEndpoint: False
       EndpointConfiguration:
