@@ -6,6 +6,18 @@ Parameters:
     Description: Environment
     Type: String
 Resources:
+  BlogPostAPIGatewayARN:
+    Type: AWS::SSM::Parameter
+    Properties:
+      DataType: text
+      Description: API Gateway ID
+      Name:
+        Fn::Join: ["/", [!Ref Environment, BlogPost, APIGateway, Id]]
+      Tags:
+        Environment: !Ref Environment
+      Type: String
+      Value: !Ref BlogPostAPIGateway
+
   BlogPostAPIGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
