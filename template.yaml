@@ -86,7 +86,7 @@ Resources:
       ApiKeyRequired: False
       HttpMethod: POST
       Integration:
-        IntegrationHttpMethod: String
+        IntegrationHttpMethod: POST
         IntegrationResponses:
           - StatusCode: 201
           - StatusCode: 400
