@@ -85,7 +85,6 @@ Resources:
       Description: !Ref Environment
       DocumentationVersion: 1.0.0
       RestApiId: !Ref BlogPostAPIGateway
-      StageName: !Ref Environment
       TracingEnabled: True
 
   BlogPostAPIGatewayBlogPostResource:
