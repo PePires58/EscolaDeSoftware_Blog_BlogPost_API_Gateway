@@ -82,6 +82,7 @@ Resources:
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
     Properties:
+      AuthorizationType: NONE
       ApiKeyRequired: False
       HttpMethod: POST
       Integration:
