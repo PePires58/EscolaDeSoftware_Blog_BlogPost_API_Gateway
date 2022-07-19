@@ -69,3 +69,47 @@ Resources:
                   description: error with input object
                 "500":
                   description: internal server error
+
+  BlogPostAPIGatewayBlogPostPostResource:
+    Type: "AWS::ApiGateway::Resource"
+    Properties:
+      RestApiId: !Ref BlogPostAPIGateway
+      ParentId: !GetAtt
+        - BlogPostAPIGateway
+        - RootResourceId
+      PathPart: "/blogposts/POST"
+
+  BlogPostAPIGatewayBlogPostPost:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      ApiKeyRequired: False
+      HttpMethod: POST
+      Integration:
+        IntegrationHttpMethod: String
+        IntegrationResponses:
+          - StatusCode: 201
+          - StatusCode: 400
+          - StatusCode: 500
+        TimeoutInMillis: 2000
+        Type: AWS_PROXY
+        Uri:
+          Fn::Join:
+            [
+              "",
+              [
+                "arn:aws:lambda:",
+                !Ref "AWS::Region",
+                ":",
+                !Ref "AWS::AccountId",
+                ":function",
+                !Ref Environment,
+                "_PutBlogPostFn",
+              ],
+            ]
+      MethodResponses:
+        - StatusCode: 201
+        - StatusCode: 400
+        - StatusCode: 500
+      OperationName: POST /blogposts
+      ResourceId: !Ref BlogPostAPIGatewayBlogPostPostResource
+      RestApiId: !Ref BlogPostAPIGateway
