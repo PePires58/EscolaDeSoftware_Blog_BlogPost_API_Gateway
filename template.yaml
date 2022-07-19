@@ -77,7 +77,7 @@ Resources:
       DeploymentId: String
       Description: !Ref Environment
       DocumentationVersion: 1.0.0
-      RestApiId: BlogPostAPIGateway
+      RestApiId: !Ref BlogPostAPIGateway
       StageName: !Ref Environment
       TracingEnabled: True
 
