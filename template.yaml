@@ -81,10 +81,3 @@ Resources:
                   description: error with input object
                 "500":
                   description: internal server error
-Outputs:
-  BlogPostAPIGateway:
-    Description: BlogPost Api Gateway
-    Value: !Ref BlogPostAPIGateway
-    Export:
-      Name:
-        Fn::Join: ["-", [!Ref Environment, BlogPostAPIGateway]]
