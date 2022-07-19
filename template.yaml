@@ -98,6 +98,9 @@ Resources:
             [
               "",
               [
+                "arn:aws:apigateway:",
+                !Ref "AWS::Region",
+                ":lambda:path/2015-03-31/functions/",
                 "arn:aws:lambda:",
                 !Ref "AWS::Region",
                 ":",
@@ -105,6 +108,7 @@ Resources:
                 ":function",
                 !Ref Environment,
                 "_PutBlogPostFn",
+                "/invocations",
               ],
             ]
       MethodResponses:
