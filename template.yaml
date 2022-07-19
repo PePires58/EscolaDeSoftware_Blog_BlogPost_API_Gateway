@@ -70,14 +70,14 @@ Resources:
                 "500":
                   description: internal server error
 
-  BlogPostAPIGatewayBlogPostPostResource:
+  BlogPostAPIGatewayBlogPostResource:
     Type: "AWS::ApiGateway::Resource"
     Properties:
       RestApiId: !Ref BlogPostAPIGateway
       ParentId: !GetAtt
         - BlogPostAPIGateway
         - RootResourceId
-      PathPart: "/blogposts/POST"
+      PathPart: "blogposts"
 
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
@@ -111,5 +111,5 @@ Resources:
         - StatusCode: 400
         - StatusCode: 500
       OperationName: POST /blogposts
-      ResourceId: !Ref BlogPostAPIGatewayBlogPostPostResource
+      ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
