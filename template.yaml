@@ -70,6 +70,17 @@ Resources:
                 "500":
                   description: internal server error
 
+  BlogPostAPIGatewayStage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      CacheClusterEnabled: False
+      DeploymentId: String
+      Description: !Ref Environment
+      DocumentationVersion: 1.0.0
+      RestApiId: BlogPostAPIGateway
+      StageName: !Ref Environment
+      TracingEnabled: True
+
   BlogPostAPIGatewayBlogPostResource:
     Type: "AWS::ApiGateway::Resource"
     Properties:
