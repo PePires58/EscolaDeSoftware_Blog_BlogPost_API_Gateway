@@ -102,7 +102,7 @@ Resources:
               ":",
               !Ref AWS::AccountId,
               ":",
-              !Ref RestApiId,
+              !Ref BlogPostAPIGateway,
               "/",
               !Ref BlogPostAPIGatewayDeployment,
               "/POST/blogposts",
