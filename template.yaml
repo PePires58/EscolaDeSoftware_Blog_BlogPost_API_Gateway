@@ -49,3 +49,26 @@ Resources:
       OperationName: POST /blogposts
       ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
+
+  BlogPostAPIGatewayBlogPostGet:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      ApiKeyRequired: False
+      HttpMethod: GET
+      Integration:
+        IntegrationHttpMethod: GET
+        IntegrationResponses:
+          - StatusCode: 200
+          - StatusCode: 400
+          - StatusCode: 500
+        TimeoutInMillis: 2000
+        Type: AWS_PROXY
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Environment}_GetBlogPostByKeyFn/invocations"
+      MethodResponses:
+        - StatusCode: 200
+        - StatusCode: 400
+        - StatusCode: 500
+      OperationName: GET /blogposts by key
+      ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
+      RestApiId: !Ref BlogPostAPIGateway
