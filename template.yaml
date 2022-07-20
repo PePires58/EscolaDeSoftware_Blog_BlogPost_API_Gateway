@@ -72,10 +72,3 @@ Resources:
       OperationName: GET /blogposts by key
       ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
-
-  BlogPostAPIGatewayDeployment:
-    Type: AWS::ApiGateway::Deployment
-    Properties:
-      RestApiId: !Ref BlogPostAPIGateway
-      Description: !Ref Environment
-      StageName: !Ref Environment
