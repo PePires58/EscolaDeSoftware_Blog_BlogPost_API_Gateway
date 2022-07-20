@@ -27,6 +27,7 @@ Resources:
           /blogposts:
             post:
               summary: insert a blogpost
+              operationId: "post/blogpost/"
               description: insert a blogpost
               requestBody:
                 required: true
@@ -69,6 +70,31 @@ Resources:
                   description: error with input object
                 "500":
                   description: internal server error
+          "/blogpost/{title}"
+            get:
+              summary: get a blogpost
+              operationId: "get/blogpost/{title}"
+              description: get a blogpost
+              parameters:
+                - name: id
+                  in: header
+                  description: blogpost id
+                  required: true
+                  schema:
+                    type: string
+                - name: title
+                  in: path
+                  description: blogpost title
+                  required: true
+                  schema:
+                    type: string
+              responses:
+                "200":
+                  description: blogpost of database
+                "400":
+                  description: error with input object
+                "500":
+                  description: internal server error
 
   BlogPostAPIGatewayDeployment:
     Type: AWS::ApiGateway::Deployment
@@ -94,6 +120,32 @@ Resources:
         - BlogPostAPIGateway
         - RootResourceId
       PathPart: "blogposts"
+
+  BlogPostAPIGatewayBlogPostGet:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      AuthorizationType: NONE
+      ApiKeyRequired: False
+      HttpMethod: GET
+      Integration:
+        IntegrationHttpMethod: GET
+        IntegrationResponses:
+          - StatusCode: 200
+          - StatusCode: 400
+          - StatusCode: 500
+        TimeoutInMillis: 2000
+        Type: AWS_PROXY
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Environment}_GetBlogPostByKeyFn/invocations"
+      MethodResponses:
+        - StatusCode: 200
+        - StatusCode: 400
+        - StatusCode: 500
+      RequestParameters:
+        - "integration.request.path.title": "method.request.path.title"
+        - "integration.request.header.id": "method.request.header.id"
+      OperationName: GET /blogposts by key
+      ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
+      RestApiId: !Ref BlogPostAPIGateway
 
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
