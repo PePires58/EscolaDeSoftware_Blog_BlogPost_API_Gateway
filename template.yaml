@@ -70,7 +70,6 @@ Resources:
                   description: error with input object
                 "500":
                   description: internal server error
-          "/blogpost/{title}":
             get:
               summary: get a blogpost
               operationId: "get/blogpost/{title}"
