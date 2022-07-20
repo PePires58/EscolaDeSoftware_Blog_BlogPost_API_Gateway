@@ -129,6 +129,9 @@ Resources:
       HttpMethod: GET
       Integration:
         IntegrationHttpMethod: GET
+        RequestParameters:
+          "integration.request.path.title": "method.request.path.title"
+          "integration.request.header.id": "method.request.header.id"
         IntegrationResponses:
           - StatusCode: 200
           - StatusCode: 400
@@ -140,9 +143,6 @@ Resources:
         - StatusCode: 200
         - StatusCode: 400
         - StatusCode: 500
-      RequestParameters:
-        "integration.request.path.title": "method.request.path.title"
-        "integration.request.header.id": "method.request.header.id"
       OperationName: GET /blogposts by key
       ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
