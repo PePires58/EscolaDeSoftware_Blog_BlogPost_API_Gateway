@@ -87,7 +87,6 @@ Resources:
     Properties:
       Action: lambda:InvokeFunction
       FunctionName: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${Environment}_GetBlogPostByKeyFn"
-      FunctionUrlAuthType: NONE
       Principal: apigateway.amazonaws.com
       SourceAccount: !Sub "${AWS::AccountId}"
       SourceArn:
