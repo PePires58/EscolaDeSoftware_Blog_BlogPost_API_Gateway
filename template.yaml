@@ -83,7 +83,7 @@ Resources:
       CacheClusterEnabled: False
       DeploymentId: !Ref BlogPostAPIGatewayDeployment
       Description: !Ref Environment
-      DocumentationVersion: 1.0.0
+      DocumentationVersion: "1.0.0"
       RestApiId: !Ref BlogPostAPIGateway
       TracingEnabled: True
 
