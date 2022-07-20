@@ -141,8 +141,8 @@ Resources:
         - StatusCode: 400
         - StatusCode: 500
       RequestParameters:
-        - integration.request.path.title: method.request.path.title
-        - integration.request.header.id: method.request.header.id
+        "integration.request.path.title": "method.request.path.title"
+        "integration.request.header.id": "method.request.header.id"
       OperationName: GET /blogposts by key
       ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
