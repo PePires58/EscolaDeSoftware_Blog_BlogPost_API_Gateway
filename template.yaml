@@ -104,7 +104,7 @@ Resources:
               !Ref BlogPostAPIGateway,
               "/",
               !Ref BlogPostAPIGatewayDeployment,
-              "/GET/${Environment}/blogposts",
+              "/GET/blogposts",
             ],
           ]
 
@@ -130,6 +130,6 @@ Resources:
               !Ref BlogPostAPIGateway,
               "/",
               !Ref BlogPostAPIGatewayDeployment,
-              !Sub "/POST/${Environment}/blogposts",
+              !Sub "/POST/blogposts",
             ],
           ]
