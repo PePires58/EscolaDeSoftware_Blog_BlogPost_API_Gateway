@@ -130,8 +130,8 @@ Resources:
       Integration:
         IntegrationHttpMethod: GET
         RequestParameters:
-          "integration.request.path.title": "method.request.path.title"
-          "integration.request.header.id": "method.request.header.id"
+          integration.request.path.title: method.request.path.title
+          integration.request.header.id: method.request.header.id
         IntegrationResponses:
           - StatusCode: 200
           - StatusCode: 400
