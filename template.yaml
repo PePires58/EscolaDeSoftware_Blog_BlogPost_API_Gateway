@@ -57,7 +57,7 @@ Resources:
       ApiKeyRequired: False
       HttpMethod: GET
       Integration:
-        IntegrationHttpMethod: POST
+        IntegrationHttpMethod: GET
         IntegrationResponses:
           - StatusCode: 200
           - StatusCode: 400
