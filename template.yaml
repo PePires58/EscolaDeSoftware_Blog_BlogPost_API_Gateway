@@ -34,15 +34,6 @@ Resources:
       Description: !Ref Environment
       StageName: !Ref Environment
 
-  BlogPostAPIGatewayStage:
-    Type: AWS::ApiGateway::Stage
-    Properties:
-      CacheClusterEnabled: False
-      DeploymentId: !Ref BlogPostAPIGatewayDeployment
-      Description: !Ref Environment
-      RestApiId: !Ref BlogPostAPIGateway
-      TracingEnabled: True
-
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
     Properties:
