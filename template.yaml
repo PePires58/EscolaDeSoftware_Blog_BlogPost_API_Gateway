@@ -27,13 +27,6 @@ Resources:
         - RootResourceId
       PathPart: "blogposts"
 
-  BlogPostAPIGatewayDeployment:
-    Type: AWS::ApiGateway::Deployment
-    Properties:
-      RestApiId: !Ref BlogPostAPIGateway
-      Description: !Ref Environment
-      StageName: !Ref Environment
-
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
     Properties:
@@ -79,3 +72,10 @@ Resources:
       OperationName: GET /blogposts by key
       ResourceId: !Ref BlogPostAPIGatewayBlogPostResource
       RestApiId: !Ref BlogPostAPIGateway
+
+  BlogPostAPIGatewayDeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref BlogPostAPIGateway
+      Description: !Ref Environment
+      StageName: !Ref Environment
