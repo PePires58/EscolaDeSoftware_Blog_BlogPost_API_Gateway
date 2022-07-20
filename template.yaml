@@ -95,22 +95,6 @@ Resources:
                 "500":
                   description: internal server error
 
-  BlogPostAPIGatewayDeployment:
-    Type: AWS::ApiGateway::Deployment
-    Properties:
-      RestApiId: !Ref BlogPostAPIGateway
-      Description: !Ref Environment
-      StageName: !Ref Environment
-
-  BlogPostAPIGatewayStage:
-    Type: AWS::ApiGateway::Stage
-    Properties:
-      CacheClusterEnabled: False
-      DeploymentId: !Ref BlogPostAPIGatewayDeployment
-      Description: !Ref Environment
-      RestApiId: !Ref BlogPostAPIGateway
-      TracingEnabled: True
-
   BlogPostAPIGatewayBlogPostResource:
     Type: "AWS::ApiGateway::Resource"
     Properties:
