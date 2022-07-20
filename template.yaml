@@ -103,7 +103,7 @@ Resources:
               ":",
               !Ref BlogPostAPIGateway,
               "/",
-              !Ref BlogPostAPIGatewayDeployment,
+              !Ref Environment,
               "/GET/blogposts",
             ],
           ]
