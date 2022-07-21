@@ -26,6 +26,13 @@ Resources:
         - RootResourceId
       PathPart: "blogposts"
 
+  BlogPostAPIGatewayBlogPostSearchResource:
+    Type: "AWS::ApiGateway::Resource"
+    Properties:
+      RestApiId: !Ref BlogPostAPIGateway
+      ParentId: !Ref BlogPostAPIGatewayBlogPostResource
+      PathPart: "search"
+
   BlogPostAPIGatewayBlogPostPost:
     Type: AWS::ApiGateway::Method
     Properties:
